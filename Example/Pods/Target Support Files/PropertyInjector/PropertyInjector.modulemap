@@ -1,0 +1,6 @@
+framework module PropertyInjector {
+  umbrella header "PropertyInjector-umbrella.h"
+
+  export *
+  module * { export * }
+}
