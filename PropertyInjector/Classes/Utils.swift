@@ -7,7 +7,13 @@
 import Foundation
 
 /**
- A protocol with a single `apply(_:)` method.
+ A protocol with a single `apply(_:)` method used to create nice syntax like this:
+ ```
+ DependencyResolver.shared.register {
+     $0.factory(type: MyDependency.self)
+     $0.single(type: AnotherDependency.self)
+ }
+ ```
  */
 protocol Applicable {}
 

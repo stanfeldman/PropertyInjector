@@ -25,7 +25,7 @@ Property injection framework for Swift 5.1+.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Stan Feldman' => 'stanislavfeldman@gmail.com' }
   s.source           = { :git => 'https://github.com/stanfeldman/PropertyInjector.git', :tag => s.version.to_s }
-  s.swift_version = '5.01'
+  s.swift_version = '5.1'
   s.ios.deployment_target = '11.0'
   s.source_files = 'PropertyInjector/Classes/**/*'
 end
