@@ -7,39 +7,27 @@
 import Foundation
 
 /**
- A generic parameters bundle which can be passed to a dependency as input.
- */
-public typealias DependencyParameters = [String: Any?]
-
-/**
- Every dependency class is expected to implement this initializer which is called when the dependency is created.
- */
-public typealias DependencyInitializer = (DependencyParameters) -> Injectable
-
-/**
  Internal class holding a definition of a dependency when it's registered in the resolver.
  */
 class DependencyDefinition {
 
     let type: Injectable.Type
     let resolutionStrategy: DependencyResolutionStrategy
-    let initializer: DependencyInitializer
     
     private var existingObject: Injectable?
     
-    init(type: Injectable.Type, resolutionStrategy: DependencyResolutionStrategy, initializer: DependencyInitializer? = nil) {
+    init(type: Injectable.Type, resolutionStrategy: DependencyResolutionStrategy) {
         self.type = type
         self.resolutionStrategy = resolutionStrategy
-        self.initializer = initializer ?? type.init
     }
     
-    func resolve(parameters: DependencyParameters) -> Injectable {
+    func resolve(resolver: DependencyResolver, parameters: DependencyParameters) -> Injectable {
         if resolutionStrategy == .singleton {
-            let objectToReturn = existingObject ?? initializer(parameters)
+            let objectToReturn = existingObject ?? type.init(from: resolver, with: parameters)
             existingObject = objectToReturn
             return objectToReturn
         } else {
-            return initializer(parameters)
+            return type.init(from: resolver, with: parameters)
         }
     }
 }

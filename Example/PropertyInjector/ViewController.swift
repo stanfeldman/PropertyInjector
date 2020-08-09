@@ -17,7 +17,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         print("from ViewController(\(UUID().uuidString))")
-        let _: Dependency2 = dependencyResolver.resolve(parameters: ["uuid": UUID().uuidString])
+        let _: Dependency2 = DependencyResolver.shared.resolve(with: ["uuid": UUID().uuidString])
     }
 
 }

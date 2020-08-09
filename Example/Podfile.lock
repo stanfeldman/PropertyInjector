@@ -1,6 +1,6 @@
 PODS:
   - Nimble (7.3.4)
-  - PropertyInjector (0.0.2)
+  - PropertyInjector (0.0.3)
   - Quick (1.2.0)
 
 DEPENDENCIES:
@@ -19,7 +19,7 @@ EXTERNAL SOURCES:
 
 SPEC CHECKSUMS:
   Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
-  PropertyInjector: ab4e42fbdbdf0d5d90a2c3196f49e94643c7382a
+  PropertyInjector: 83fd9fd4c64e4f897053b75b07ba6aa1a97c218b
   Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
 
 PODFILE CHECKSUM: b2b3d69c84075b0f90f75676d91d212b149a9a4d

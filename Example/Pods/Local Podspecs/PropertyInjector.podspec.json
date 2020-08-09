@@ -1,6 +1,6 @@
 {
   "name": "PropertyInjector",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "summary": "Property injection framework for Swift 5.1+.",
   "description": "Property injection framework for Swift 5.1+ and iOS 11+.\nJust declare a dependency as a property in your class and use @Inject property wrapper.",
   "homepage": "https://github.com/stanfeldman/PropertyInjector",
@@ -13,7 +13,7 @@
   },
   "source": {
     "git": "https://github.com/stanfeldman/PropertyInjector.git",
-    "tag": "0.0.2"
+    "tag": "0.0.3"
   },
   "swift_versions": "5.1",
   "platforms": {

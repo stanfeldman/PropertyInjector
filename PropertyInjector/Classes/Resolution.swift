@@ -36,14 +36,14 @@ public class DependencyResolver {
         DependencyRegistrar().apply(closure)
     }
     
-    public func register<Dependency: Injectable>(type: Dependency.Type, resolutionStrategy: DependencyResolutionStrategy, initializer: DependencyInitializer? = nil) {
+    public func register<Dependency: Injectable>(type: Dependency.Type, resolutionStrategy: DependencyResolutionStrategy) {
         let key = keyFor(type: Dependency.self)
-        dependencyDefinitions[key] = DependencyDefinition(type: type, resolutionStrategy: resolutionStrategy, initializer: initializer)
+        dependencyDefinitions[key] = DependencyDefinition(type: type, resolutionStrategy: resolutionStrategy)
     }
     
-    public func resolve<Dependency: Injectable>(parameters: DependencyParameters) -> Dependency {
+    public func resolve<Dependency: Injectable>(with parameters: DependencyParameters) -> Dependency {
         let key = keyFor(type: Dependency.self)
-        if let injectable = dependencyDefinitions[key]?.resolve(parameters: parameters) as? Dependency {
+        if let injectable = dependencyDefinitions[key]?.resolve(resolver: self, parameters: parameters) as? Dependency {
             return injectable
         } else {
             fatalError("\(key) has not been added as an injectable object.")
@@ -60,11 +60,11 @@ public class DependencyResolver {
  */
 public class DependencyRegistrar: Applicable {
     
-    public func factory<Dependency: Injectable>(type: Dependency.Type, initializer: DependencyInitializer? = nil) {
-        DependencyResolver.shared.register(type: type, resolutionStrategy: .factory, initializer: initializer)
+    public func factory<Dependency: Injectable>(type: Dependency.Type) {
+        DependencyResolver.shared.register(type: type, resolutionStrategy: .factory)
     }
     
-    public func singleton<Dependency: Injectable>(type: Dependency.Type, initializer: DependencyInitializer? = nil) {
-        DependencyResolver.shared.register(type: type, resolutionStrategy: .singleton, initializer: initializer)
+    public func singleton<Dependency: Injectable>(type: Dependency.Type) {
+        DependencyResolver.shared.register(type: type, resolutionStrategy: .singleton)
     }
 }

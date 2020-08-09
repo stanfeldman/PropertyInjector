@@ -25,7 +25,7 @@ Inherit from `Injectable` and implement an initalizer which will be called when 
 
 ```swift
 class MyDependency: Injectable {
-    required init(parameters: DependencyParameters) {
+    required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {
         // your custom initialization logic
         // DependencyParameters is just [String: Any?]
     }
@@ -67,6 +67,47 @@ import UIKit
 
 class ViewController: UIViewController {
     @Inject private var dependency: MyDependency
+}
+```
+
+## Advanced features
+
+### Manual dependency resolution
+
+Automatic property injection using `@Inject` is prefferable, but it is possible to manually resolve a dependency.
+
+```swift
+class ViewController: UIViewController {
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        let dependency: Dependency2 = DependencyResolver.shared.resolve(with: ["uuid": UUID().uuidString])
+    }
+}
+```
+
+### Circular dependencies
+
+Do not simply try to inject class B into class A and class A into class B. This type of dependency causes infinite recursion.
+Use `initCompleted` callback to manually resolve a parent dependency.
+
+```swift
+class Dependency1: Injectable {
+    
+    /// Circular dependency, resolve manually
+    private weak var content: Content?
+    
+    required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {}
+    
+    func initCompleted(from resolver: DependencyResolver, with parameters: DependencyParameters) {
+        // deferred resolution of a circular dependency
+        content = resolver.resolve(with: parameters)
+    }
+}
+
+class Content: Injectable {
+    @Inject var dependency: Dependency1
+    
+    required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {}
 }
 ```
 
