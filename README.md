@@ -2,7 +2,6 @@
 
 [![CI Status](https://img.shields.io/travis/stanfeldman/PropertyInjector.svg?style=flat)](https://travis-ci.org/stanfeldman/PropertyInjector)
 [![Version](https://img.shields.io/cocoapods/v/PropertyInjector.svg?style=flat)](https://cocoapods.org/pods/PropertyInjector)
-[![License](https://img.shields.io/cocoapods/l/PropertyInjector.svg?style=flat)](https://cocoapods.org/pods/PropertyInjector)
 [![Platform](https://img.shields.io/cocoapods/p/PropertyInjector.svg?style=flat)](https://cocoapods.org/pods/PropertyInjector)
 
 ## Requirements
