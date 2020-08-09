@@ -1,8 +1,8 @@
 # PropertyInjector
 
-[![CI Status](https://img.shields.io/travis/stanfeldman/PropertyInjector.svg?style=flat)](https://travis-ci.org/stanfeldman/PropertyInjector)
+<a href="https://swift.org"><img src="https://img.shields.io/badge/language-Swift%205.2-ee5137.svg" alt="Language" /></a>
+<a href="https://developer.apple.com/ios"><img src="https://img.shields.io/badge/platform-iOS%2011+-000000.svg" alt="Platform" /></a>
 [![Version](https://img.shields.io/cocoapods/v/PropertyInjector.svg?style=flat)](https://cocoapods.org/pods/PropertyInjector)
-[![Platform](https://img.shields.io/cocoapods/p/PropertyInjector.svg?style=flat)](https://cocoapods.org/pods/PropertyInjector)
 
 ## Requirements
 
