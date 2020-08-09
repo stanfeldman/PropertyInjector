@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PropertyInjector'
-  s.version          = '0.0.1'
+  s.version          = '0.0.2'
   s.summary          = 'Property injection framework for Swift 5.1+.'
 
 # This description is used to generate tags and improve search results.
@@ -18,7 +18,8 @@ Pod::Spec.new do |s|
 #   * Finally, don't worry about the indent, CocoaPods strips it!
 
   s.description      = <<-DESC
-Property injection framework for Swift 5.1+.
+Property injection framework for Swift 5.1+ and iOS 11+.
+Just declare a dependency as a property in your class and use @Inject property wrapper.
                        DESC
 
   s.homepage         = 'https://github.com/stanfeldman/PropertyInjector'
