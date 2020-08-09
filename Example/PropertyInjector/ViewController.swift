@@ -4,14 +4,14 @@
 //  Copyright (c) 2020 Stan Feldman. All rights reserved.
 //
 
-import UIKit
 import PropertyInjector
+import UIKit
 
 class ViewController: UIViewController {
     
     @Inject var smallContent: Content
     @Inject var mediumContent: Content
-    @Inject var dependency: Dependency1
+    @Inject private var dependency: Dependency1
     @Inject(parameters: ["param1": 542]) var dependency2: Dependency2
 
     override func viewDidLoad() {
