@@ -4,20 +4,6 @@
 //  Copyright (c) 2020 Stan Feldman. All rights reserved.
 //
 
-import Foundation
-
-/**
- Dependency resolution strategies.
- */
-public enum DependencyResolutionStrategy {
-    
-    /// Dependency will be recreated every time it's injected.
-    case factory
-    
-    /// There will be only one instance of the dependency class.
-    case singleton
-}
-
 /**
  Singleton used to register and resolve your dependencies.
  ```
@@ -41,7 +27,7 @@ public class DependencyResolver {
         dependencyDefinitions[key] = DependencyDefinition(type: type, resolutionStrategy: resolutionStrategy)
     }
     
-    public func resolve<Dependency: Injectable>(with parameters: DependencyParameters) -> Dependency {
+    public func resolve<Dependency: Injectable>(with parameters: DependencyParameters = defaultDependencyParameters) -> Dependency {
         let key = keyFor(type: Dependency.self)
         if let injectable = dependencyDefinitions[key]?.resolve(resolver: self, parameters: parameters) as? Dependency {
             return injectable
@@ -52,19 +38,5 @@ public class DependencyResolver {
     
     private func keyFor<Dependency: Injectable>(type: Dependency.Type) -> String {
         return String(reflecting: Dependency.self)
-    }
-}
-
-/**
- Helper class providing registering methods for various strategies of dependency resolution.
- */
-public class DependencyRegistrar: Applicable {
-    
-    public func factory<Dependency: Injectable>(type: Dependency.Type) {
-        DependencyResolver.shared.register(type: type, resolutionStrategy: .factory)
-    }
-    
-    public func singleton<Dependency: Injectable>(type: Dependency.Type) {
-        DependencyResolver.shared.register(type: type, resolutionStrategy: .singleton)
     }
 }

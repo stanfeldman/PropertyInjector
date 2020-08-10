@@ -9,13 +9,13 @@ import PropertyInjector
 class DependencyManager {
     init() {
         DependencyResolver.shared.register {
-            $0.factory(type: Content.self)
+            $0.singleton(type: Content.self)
             $0.singleton(type: Dependency1.self)
             $0.factory(type: Dependency2.self)
         }
         
         // or
-        // DependencyResolver.shared.register(type: Content.self, resolutionStrategy: .factory)
+        // DependencyResolver.shared.register(type: Content.self, resolutionStrategy: .singleton)
     }
 }
 

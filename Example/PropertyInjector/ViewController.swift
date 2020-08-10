@@ -10,14 +10,17 @@ import UIKit
 class ViewController: UIViewController {
     
     @Inject var smallContent: Content
-    @Inject var mediumContent: Content
     @Inject private var dependency: Dependency1
-    @Inject(parameters: ["param1": 542]) var dependency2: Dependency2
+    @Inject(with: ["param1": 542]) var dependency2: Dependency2
+    
+    @LazyInject private var mediumContent: Content
 
     override func viewDidLoad() {
         super.viewDidLoad()
         print("from ViewController(\(UUID().uuidString))")
         let _: Dependency2 = DependencyResolver.shared.resolve(with: ["uuid": UUID().uuidString])
+        
+        mediumContent.doSomething()
     }
 
 }

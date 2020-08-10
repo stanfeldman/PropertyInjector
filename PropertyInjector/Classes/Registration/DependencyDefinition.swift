@@ -4,8 +4,6 @@
 //  Copyright (c) 2020 Stan Feldman. All rights reserved.
 //
 
-import Foundation
-
 /**
  Internal class holding a definition of a dependency when it's registered in the resolver.
  */

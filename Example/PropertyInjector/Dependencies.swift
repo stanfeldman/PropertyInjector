@@ -22,7 +22,10 @@ class Dependency1: Injectable {
 }
 
 class Dependency2: Injectable {
+    let parameters: DependencyParameters
+    
     required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {
+        self.parameters = parameters
         print("from Dependency2(\(UUID().uuidString)), parameters: \(parameters)")
     }
 }
@@ -32,5 +35,9 @@ class Content: Injectable {
     
     required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {
         print("from Content(\(UUID().uuidString))")
+    }
+    
+    func doSomething() {
+        print("Content did something")
     }
 }

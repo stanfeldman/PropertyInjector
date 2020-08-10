@@ -37,8 +37,6 @@ class MyDependency: Injectable {
 You need to make sure that your dependencies get registered before they are injected. You can create a manager class and register the dependencies in its constructor.
 
 ```swift
-import PropertyInjector
-
 class DependencyManager {
     init() {
         DependencyResolver.shared.register {
@@ -48,7 +46,7 @@ class DependencyManager {
 }
 ```
 
-And add this manager to your AppDelegate.
+And add this manager to your `AppDelegate` for UIKit projects and `App` object for SwiftUI projects.
 
 ```swift
 @UIApplicationMain
@@ -62,15 +60,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 Just declare your dependency object as a property and add `@Inject` property wrapper. The dependency will be automatically resolved and ready to use.
 
 ```swift
-import PropertyInjector
-import UIKit
-
 class ViewController: UIViewController {
     @Inject private var dependency: MyDependency
 }
 ```
 
 ## Advanced features
+
+### Lazy injection
+
+Use `@LazyInject` property wrapper to have a dependency created only when it is used.
+
+```swift
+class ViewController: UIViewController {
+    @LazyInject private var dependency: MyDependency
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        // dependency is resolved only at this stage
+        dependency.doSomething()
+    }
+}
+```
 
 ### Manual dependency resolution
 

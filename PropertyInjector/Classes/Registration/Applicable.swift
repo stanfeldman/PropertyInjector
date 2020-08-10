@@ -4,8 +4,6 @@
 //  Copyright (c) 2020 Stan Feldman. All rights reserved.
 //
 
-import Foundation
-
 /**
  A protocol with a single `apply(_:)` method used to create nice syntax like this:
  ```
