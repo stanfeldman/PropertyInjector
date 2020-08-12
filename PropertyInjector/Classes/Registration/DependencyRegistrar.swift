@@ -9,11 +9,31 @@
  */
 public class DependencyRegistrar: Applicable {
     
-    public func factory<Dependency: Injectable>(type: Dependency.Type) {
-        DependencyResolver.register(type: type, resolutionStrategy: .factory)
+    // MARK: - no parameters
+    
+    public func factory<Dependency>(_ type: Dependency.Type, _ initializer: @autoclosure @escaping () -> Dependency) {
+        DependencyResolver.register(type: type, resolutionStrategy: .factory, initializer: initializer)
     }
     
-    public func singleton<Dependency: Injectable>(type: Dependency.Type) {
-        DependencyResolver.register(type: type, resolutionStrategy: .singleton)
+    public func factory<Dependency>(_ type: Dependency.Type, _ initializer: @escaping () -> Dependency) {
+        DependencyResolver.register(type: type, resolutionStrategy: .factory, initializer: initializer)
+    }
+    
+    public func singleton<Dependency>(_ type: Dependency.Type, _ initializer: @autoclosure @escaping () -> Dependency) {
+        DependencyResolver.register(type: type, resolutionStrategy: .singleton, initializer: initializer)
+    }
+    
+    public func singleton<Dependency>(_ type: Dependency.Type, _ initializer: @escaping () -> Dependency) {
+        DependencyResolver.register(type: type, resolutionStrategy: .singleton, initializer: initializer)
+    }
+    
+    // MARK: - with parameters
+    
+    public func factory<Dependency>(_ type: Dependency.Type, _ initializer: @escaping (DependencyParameters) -> Dependency) {
+        DependencyResolver.register(type: type, resolutionStrategy: .factory, initializer: initializer)
+    }
+    
+    public func singleton<Dependency>(_ type: Dependency.Type, _ initializer: @escaping (DependencyParameters) -> Dependency) {
+        DependencyResolver.register(type: type, resolutionStrategy: .singleton, initializer: initializer)
     }
 }

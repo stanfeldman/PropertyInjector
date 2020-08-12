@@ -19,19 +19,6 @@ it, simply add the following line to your Podfile:
 pod 'PropertyInjector'
 ```
 
-### Make your dependency classes injectable
-
-Inherit from `Injectable` and implement an initalizer which will be called when your dependency is created.
-
-```swift
-class MyDependency: Injectable {
-    required init(with parameters: DependencyParameters) {
-        // your custom initialization logic
-        // DependencyParameters is just [String: Any?]
-    }
-}
-```
-
 ### Register your dependencies
 
 You need to make sure that your dependencies get registered before they are injected. You can create a manager class and register the dependencies in its constructor.
@@ -40,7 +27,7 @@ You need to make sure that your dependencies get registered before they are inje
 class DependencyManager {
     init() {
         DependencyResolver.register {
-            $0.factory(type: MyDependency.self)
+            $0.singleton(MyDependency.self, MyDependency())
         }
     }
 }
@@ -57,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 ### Inject your dependencies
 
-Just declare your dependency object as a property and add `@Inject` property wrapper. The dependency will be automatically resolved and ready to use.
+Just declare your dependency object as a property and add `@Inject` property wrapper. The dependency will be lazily resolved when the object is used.
 
 ```swift
 class ViewController: UIViewController {
@@ -67,19 +54,15 @@ class ViewController: UIViewController {
 
 ## Advanced features
 
-### Lazy injection
+### Dependency parameters
 
-Use `@LazyInject` property wrapper to have a dependency created only when it is used.
+You can register a dependency with parameters.
 
 ```swift
-class ViewController: UIViewController {
-    @LazyInject private var dependency: MyDependency
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // dependency is resolved only at this stage
-        dependency.doSomething()
-    }
+DependencyResolver.register {
+	$0.factory(MyDependency.self) { parameters in
+		return MyDependency(name: parameters["name"] as! String)
+	}
 }
 ```
 
@@ -91,36 +74,15 @@ Automatic property injection using `@Inject` is prefferable, but it is possible 
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dependency: Dependency2 = DependencyResolver.resolve(with: ["uuid": UUID().uuidString])
+        let dependency1: MyDependency1 = DependencyResolver.resolve()
+        let dependency2: MyDependency2 = DependencyResolver.resolve(with: ["uuid": UUID().uuidString])
     }
 }
 ```
 
 ### Circular dependencies
 
-Do not simply try to inject class B into class A and class A into class B. This type of dependency causes infinite recursion.
-Use `initCompleted` callback to manually resolve a parent dependency.
-
-```swift
-class Dependency1: Injectable {
-    
-    /// Circular dependency, resolve manually
-    private weak var content: Content?
-    
-    required init(with parameters: DependencyParameters) {}
-    
-    func initCompleted(with parameters: DependencyParameters) {
-        // deferred resolution of a circular dependency
-        content = DependencyResolver.resolve(with: parameters)
-    }
-}
-
-class Content: Injectable {
-    @Inject var dependency: Dependency1
-    
-    required init(with parameters: DependencyParameters) {}
-}
-```
+Dependencies are resolved on demand so there is no problem injecting class B into class A and class A into class B as long as both dependencies are not used in their constructors.
 
 ## Example
 

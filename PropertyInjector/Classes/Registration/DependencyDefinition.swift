@@ -5,27 +5,20 @@
 //
 
 /**
- Internal class holding a definition of a dependency when it's registered in the resolver.
+ Definition of a dependency when it's registered in the resolver.
  */
-class DependencyDefinition {
-
-    let type: Injectable.Type
+struct DependencyDefinition {
     let resolutionStrategy: DependencyResolutionStrategy
-    
-    private var existingObject: Injectable?
-    
-    init(type: Injectable.Type, resolutionStrategy: DependencyResolutionStrategy) {
-        self.type = type
-        self.resolutionStrategy = resolutionStrategy
-    }
-    
-    func resolve(with parameters: DependencyParameters) -> Injectable {
-        if resolutionStrategy == .singleton {
-            let objectToReturn = existingObject ?? type.init(with: parameters)
-            existingObject = objectToReturn
-            return objectToReturn
-        } else {
-            return type.init(with: parameters)
-        }
-    }
+    let initializer: DependencyInitializer
 }
+
+/**
+Definition of a dependency with parameters when it's registered in the resolver.
+*/
+struct DependencyDefinitionWithParameters {
+    let resolutionStrategy: DependencyResolutionStrategy
+    let initializer: DependencyInitializerWithParameters
+}
+
+typealias DependencyInitializer = () -> Any
+typealias DependencyInitializerWithParameters = (DependencyParameters) -> Any

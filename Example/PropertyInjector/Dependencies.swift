@@ -6,51 +6,41 @@
 
 import PropertyInjector
 
-class Dependency1: Injectable {
-    
-    /// Circular dependency, resolve manually
-    private weak var content: Content?
-    
-    required init(with parameters: DependencyParameters) {
-        print("from Dependency1(\(UUID().uuidString)), parameters: \(parameters)")
-    }
-    
-    func initCompleted(with parameters: DependencyParameters) {
-        // deferred resolution of a circular dependency
-        content = DependencyResolver.resolve(with: parameters)
-    }
-}
-
-class Dependency2: Injectable {
-    let parameters: DependencyParameters
-    
-    required init(with parameters: DependencyParameters) {
-        self.parameters = parameters
-        print("from Dependency2(\(UUID().uuidString)), parameters: \(parameters)")
-    }
-}
-
-class Content: Injectable {
-    @Inject var dependency: Dependency1
-    
-    required init(with parameters: DependencyParameters) {
-        print("from Content(\(UUID().uuidString))")
-    }
+class Dependency {
+    @Inject var sub1: SubDependency1
     
     func doSomething() {
         print("Content did something")
+        _ = sub1.id
+        let sub2: SubDependency2 = DependencyResolver.resolve(with: ["name": "Boris"])
+        sub2.doSomething()
+    }
+    
+    func helpFromParent() {
+        print("Parent helped")
     }
 }
 
-class ProductionDependency: Injectable {
-    required init(with parameters: DependencyParameters) {
-        print("ProductionDependency initialized")
+class SubDependency1: Identifiable {}
+
+class SubDependency2: Identifiable {
+    init(name: String) {
+        super.init()
+        print("from SubDependency2(\(id)): \(name)")
+    }
+    
+    @Inject private var parent: Dependency
+    
+    func doSomething() {
+        parent.helpFromParent()
+        print("SubDependency1 did something")
     }
 }
 
-class MockedDependency: ProductionDependency {
-    required init(with parameters: DependencyParameters) {
-        super.init(with: parameters)
-        print("MockedDependency initialized")
+class Identifiable {
+    let id = UUID().uuidString
+    
+    init() {
+        print("from \(String(reflecting: self))(\(id))")
     }
 }

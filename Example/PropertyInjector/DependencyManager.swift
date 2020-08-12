@@ -9,10 +9,13 @@ import PropertyInjector
 class DependencyManager {
     init() {
         DependencyResolver.register {
-            $0.singleton(type: Content.self)
-            $0.singleton(type: Dependency1.self)
-            $0.factory(type: Dependency2.self)
-            $0.factory(type: MockedDependency.self as ProductionDependency.Type)
+            $0.factory(Dependency.self, Dependency())
+            $0.singleton(SubDependency1.self) {
+                return SubDependency1()
+            }
+            $0.factory(SubDependency2.self) { parameters in
+                return SubDependency2(name: parameters["name"] as! String)
+            }
         }
     }
 }

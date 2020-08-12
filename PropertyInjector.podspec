@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PropertyInjector'
-  s.version          = '0.0.4'
+  s.version          = '0.0.5'
   s.summary          = 'Property dependency injection micro framework for Swift.'
 
 # This description is used to generate tags and improve search results.
@@ -19,7 +19,7 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 Property dependency injection framework for Swift 5.1+ and iOS 11+.
-Just declare a dependency as a property in your class and use @Inject property wrapper for it to be automatically resolved.
+Just declare a dependency as a property in your class and use @Inject property wrapper for it to be resolved on demand.
                        DESC
 
   s.homepage         = 'https://github.com/stanfeldman/PropertyInjector'
