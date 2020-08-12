@@ -30,9 +30,8 @@ public struct LazyInject<T: Injectable> {
             if let value = valueHolder {
                 return value
             } else {
-                let resolver = DependencyResolver.shared
-                valueHolder = resolver.resolve(with: parameters)
-                valueHolder?.initCompleted(from: resolver, with: parameters)
+                valueHolder = DependencyResolver.resolve(with: parameters)
+                valueHolder?.initCompleted(with: parameters)
             }
             
             return self.wrappedValue

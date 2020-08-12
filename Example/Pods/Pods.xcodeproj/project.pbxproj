@@ -658,8 +658,8 @@
 		D2FF188AB1F14C8A295EDA01062A16D0 /* Injection */ = {
 			isa = PBXGroup;
 			children = (
-				A73BCE8E684177603D469C965A7B67EB /* Inject.swift */,
 				A81410E0B861697D43695FCA021F8C12 /* Injectable.swift */,
+				A73BCE8E684177603D469C965A7B67EB /* Inject.swift */,
 				7E9AA4DCBBE4CBFE5B074636350F3D68 /* LazyInject.swift */,
 			);
 			name = Injection;

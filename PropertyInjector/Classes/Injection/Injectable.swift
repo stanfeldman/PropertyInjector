@@ -8,7 +8,7 @@
  Conform to `Injectable` protocol to make your dependency injectable via property injection.
  ```
  class MyDependency: Injectable {
-     required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {
+     required init(with parameters: DependencyParameters) {
          // your custom initialization logic
          // parametersProvider is a closure returning [String: Any?]
      }
@@ -16,11 +16,11 @@
  ```
  */
 public protocol Injectable {
-    init(from resolver: DependencyResolver, with parameters: DependencyParameters)
+    init(with parameters: DependencyParameters)
 }
 
 extension Injectable {
     
     /// Initialization completed callback which is called when the object has been created.
-    public func initCompleted(from resolver: DependencyResolver, with parameters: DependencyParameters) {}
+    public func initCompleted(with parameters: DependencyParameters) {}
 }

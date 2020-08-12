@@ -19,13 +19,13 @@ class DependencyDefinition {
         self.resolutionStrategy = resolutionStrategy
     }
     
-    func resolve(resolver: DependencyResolver, parameters: DependencyParameters) -> Injectable {
+    func resolve(with parameters: DependencyParameters) -> Injectable {
         if resolutionStrategy == .singleton {
-            let objectToReturn = existingObject ?? type.init(from: resolver, with: parameters)
+            let objectToReturn = existingObject ?? type.init(with: parameters)
             existingObject = objectToReturn
             return objectToReturn
         } else {
-            return type.init(from: resolver, with: parameters)
+            return type.init(with: parameters)
         }
     }
 }

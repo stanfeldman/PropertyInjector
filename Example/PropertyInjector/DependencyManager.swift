@@ -8,7 +8,7 @@ import PropertyInjector
 
 class DependencyManager {
     init() {
-        DependencyResolver.shared.register {
+        DependencyResolver.register {
             $0.singleton(type: Content.self)
             $0.singleton(type: Dependency1.self)
             $0.factory(type: Dependency2.self)

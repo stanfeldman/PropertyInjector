@@ -25,7 +25,7 @@ Inherit from `Injectable` and implement an initalizer which will be called when 
 
 ```swift
 class MyDependency: Injectable {
-    required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {
+    required init(with parameters: DependencyParameters) {
         // your custom initialization logic
         // DependencyParameters is just [String: Any?]
     }
@@ -39,7 +39,7 @@ You need to make sure that your dependencies get registered before they are inje
 ```swift
 class DependencyManager {
     init() {
-        DependencyResolver.shared.register {
+        DependencyResolver.register {
             $0.factory(type: MyDependency.self)
         }
     }
@@ -91,7 +91,7 @@ Automatic property injection using `@Inject` is prefferable, but it is possible 
 class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dependency: Dependency2 = DependencyResolver.shared.resolve(with: ["uuid": UUID().uuidString])
+        let dependency: Dependency2 = DependencyResolver.resolve(with: ["uuid": UUID().uuidString])
     }
 }
 ```
@@ -107,18 +107,18 @@ class Dependency1: Injectable {
     /// Circular dependency, resolve manually
     private weak var content: Content?
     
-    required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {}
+    required init(with parameters: DependencyParameters) {}
     
-    func initCompleted(from resolver: DependencyResolver, with parameters: DependencyParameters) {
+    func initCompleted(with parameters: DependencyParameters) {
         // deferred resolution of a circular dependency
-        content = resolver.resolve(with: parameters)
+        content = DependencyResolver.resolve(with: parameters)
     }
 }
 
 class Content: Injectable {
     @Inject var dependency: Dependency1
     
-    required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {}
+    required init(with parameters: DependencyParameters) {}
 }
 ```
 

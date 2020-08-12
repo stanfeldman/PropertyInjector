@@ -18,8 +18,7 @@ public struct Inject<T: Injectable> {
     public let wrappedValue: T
     
     public init(with parameters: DependencyParameters = defaultDependencyParameters) {
-        let resolver = DependencyResolver.shared
-        wrappedValue = resolver.resolve(with: parameters)
-        wrappedValue.initCompleted(from: resolver, with: parameters)
+        wrappedValue = DependencyResolver.resolve(with: parameters)
+        wrappedValue.initCompleted(with: parameters)
     }
 }

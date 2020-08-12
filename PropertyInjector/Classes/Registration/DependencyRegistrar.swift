@@ -10,10 +10,10 @@
 public class DependencyRegistrar: Applicable {
     
     public func factory<Dependency: Injectable>(type: Dependency.Type) {
-        DependencyResolver.shared.register(type: type, resolutionStrategy: .factory)
+        DependencyResolver.register(type: type, resolutionStrategy: .factory)
     }
     
     public func singleton<Dependency: Injectable>(type: Dependency.Type) {
-        DependencyResolver.shared.register(type: type, resolutionStrategy: .singleton)
+        DependencyResolver.register(type: type, resolutionStrategy: .singleton)
     }
 }
