@@ -13,9 +13,9 @@
  ```
  */
 public class DependencyResolver {
-    private var dependencyDefinitions = [String: DependencyDefinition]()
     
-    private static let shared = DependencyResolver()
+    private static var dependencyDefinitions = [String: DependencyDefinition]()
+
     private init() {}
     
     public static func register(_ closure: @escaping (DependencyRegistrar) -> Void) {
@@ -24,12 +24,12 @@ public class DependencyResolver {
     
     public static func register<Dependency: Injectable>(type: Dependency.Type, resolutionStrategy: DependencyResolutionStrategy) {
         let key = keyFor(type: Dependency.self)
-        shared.dependencyDefinitions[key] = DependencyDefinition(type: type, resolutionStrategy: resolutionStrategy)
+        self.dependencyDefinitions[key] = DependencyDefinition(type: type, resolutionStrategy: resolutionStrategy)
     }
     
     public static func resolve<Dependency: Injectable>(with parameters: DependencyParameters = defaultDependencyParameters) -> Dependency {
         let key = keyFor(type: Dependency.self)
-        if let injectable = shared.dependencyDefinitions[key]?.resolve(with: parameters) as? Dependency {
+        if let injectable = self.dependencyDefinitions[key]?.resolve(with: parameters) as? Dependency {
             return injectable
         } else {
             fatalError("\(key) has not been added as an injectable object.")
