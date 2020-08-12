@@ -60,9 +60,9 @@ You can register a dependency with parameters.
 
 ```swift
 DependencyResolver.register {
-	$0.factory(MyDependency.self) { parameters in
-		return MyDependency(name: parameters["name"] as! String)
-	}
+    $0.factory(MyDependency.self) { parameters in
+        return MyDependency(name: parameters["name"] as! String)
+    }
 }
 ```
 
