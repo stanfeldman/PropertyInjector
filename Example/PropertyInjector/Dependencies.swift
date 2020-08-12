@@ -41,3 +41,16 @@ class Content: Injectable {
         print("Content did something")
     }
 }
+
+class ProductionDependency: Injectable {
+    required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {
+        print("ProductionDependency initialized")
+    }
+}
+
+class MockedDependency: ProductionDependency {
+    required init(from resolver: DependencyResolver, with parameters: DependencyParameters) {
+        super.init(from: resolver, with: parameters)
+        print("MockedDependency initialized")
+    }
+}

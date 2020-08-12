@@ -12,10 +12,8 @@ class DependencyManager {
             $0.singleton(type: Content.self)
             $0.singleton(type: Dependency1.self)
             $0.factory(type: Dependency2.self)
+            $0.factory(type: MockedDependency.self as ProductionDependency.Type)
         }
-        
-        // or
-        // DependencyResolver.shared.register(type: Content.self, resolutionStrategy: .singleton)
     }
 }
 

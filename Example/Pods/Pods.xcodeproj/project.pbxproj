@@ -452,9 +452,9 @@
 		5B2031E13A0CCEF9EB727DCF9DDCB358 /* Registration */ = {
 			isa = PBXGroup;
 			children = (
-				75CD3BF0024090D298B44585E1E1256D /* Applicable.swift */,
-				1D46164771B0F0FCB44BC5F487427043 /* DependencyDefinition.swift */,
 				67E3E2EDCAE341A735734BC72D43B598 /* DependencyRegistrar.swift */,
+				1D46164771B0F0FCB44BC5F487427043 /* DependencyDefinition.swift */,
+				75CD3BF0024090D298B44585E1E1256D /* Applicable.swift */,
 			);
 			name = Registration;
 			path = PropertyInjector/Classes/Registration;
@@ -607,9 +607,9 @@
 		AED6DC97C1B765C621D988971F557622 /* Resolution */ = {
 			isa = PBXGroup;
 			children = (
-				FC1841CEC4703E0753E2C6E1818F551A /* DependencyParameters.swift */,
-				BB2AC6075B4E16D443BF9DB40762B460 /* DependencyResolutionStrategy.swift */,
 				2DF25282B3863F70E1168F10F7E8F946 /* DependencyResolver.swift */,
+				BB2AC6075B4E16D443BF9DB40762B460 /* DependencyResolutionStrategy.swift */,
+				FC1841CEC4703E0753E2C6E1818F551A /* DependencyParameters.swift */,
 			);
 			name = Resolution;
 			path = PropertyInjector/Classes/Resolution;

@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @Inject var smallContent: Content
     @Inject private var dependency: Dependency1
     @Inject(with: ["param1": 542]) var dependency2: Dependency2
+    @Inject var anotherDependency: ProductionDependency
     
     @LazyInject private var mediumContent: Content
 
