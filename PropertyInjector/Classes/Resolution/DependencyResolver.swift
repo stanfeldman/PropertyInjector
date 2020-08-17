@@ -84,6 +84,13 @@ public class DependencyResolver {
         }
     }
     
+    /// Clear all dependency registrations.
+    public static func clear() {
+        dependencyDefinitions = [:]
+        dependencyDefinitionsWithParameters = [:]
+        sharedInstances = [:]
+    }
+    
     private static func keyFor<Dependency>(type: Dependency.Type) -> String {
         return String(reflecting: Dependency.self)
     }

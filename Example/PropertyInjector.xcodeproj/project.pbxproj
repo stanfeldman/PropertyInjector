@@ -12,7 +12,7 @@
 		4C742F1C24DEF5A7003531E8 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C742F1B24DEF5A7003531E8 /* Dependencies.swift */; };
 		607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD51AFB9204008FA782 /* AppDelegate.swift */; };
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
-		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
+		607FACEC1AFB9204008FA782 /* PropertyInjectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* PropertyInjectorTests.swift */; };
 		AA0FD559196533EE2D5D5019 /* Pods_PropertyInjector_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54194E9FF47E0B5520F1CF5 /* Pods_PropertyInjector_Tests.framework */; };
 		DDA312EDD41909C86153D0A5 /* Pods_PropertyInjector_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 758A7C8295F68F44E95E1D16 /* Pods_PropertyInjector_Example.framework */; };
 /* End PBXBuildFile section */
@@ -40,7 +40,7 @@
 		607FACD71AFB9204008FA782 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		607FACE51AFB9204008FA782 /* PropertyInjector_Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PropertyInjector_Tests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		607FACEA1AFB9204008FA782 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		607FACEB1AFB9204008FA782 /* Tests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests.swift; sourceTree = "<group>"; };
+		607FACEB1AFB9204008FA782 /* PropertyInjectorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropertyInjectorTests.swift; sourceTree = "<group>"; };
 		7100C351A0C9F07CF5F10032 /* PropertyInjector.podspec */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = PropertyInjector.podspec; path = ../PropertyInjector.podspec; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		758A7C8295F68F44E95E1D16 /* Pods_PropertyInjector_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_PropertyInjector_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B41BD6F007D0F2ED7994DE46 /* Pods-PropertyInjector_Example.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PropertyInjector_Example.release.xcconfig"; path = "Target Support Files/Pods-PropertyInjector_Example/Pods-PropertyInjector_Example.release.xcconfig"; sourceTree = "<group>"; };
@@ -115,7 +115,7 @@
 		607FACE81AFB9204008FA782 /* Tests */ = {
 			isa = PBXGroup;
 			children = (
-				607FACEB1AFB9204008FA782 /* Tests.swift */,
+				607FACEB1AFB9204008FA782 /* PropertyInjectorTests.swift */,
 				607FACE91AFB9204008FA782 /* Supporting Files */,
 			);
 			path = Tests;
@@ -359,7 +359,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				607FACEC1AFB9204008FA782 /* Tests.swift in Sources */,
+				607FACEC1AFB9204008FA782 /* PropertyInjectorTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

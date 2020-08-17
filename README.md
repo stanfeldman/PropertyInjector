@@ -1,22 +1,26 @@
 # PropertyInjector
 
-<a href="https://swift.org"><img src="https://img.shields.io/badge/language-Swift%205.2-ee5137.svg" alt="Language" /></a>
+<a href="https://swift.org"><img src="https://img.shields.io/badge/language-Swift%205.1+-ee5137.svg" alt="Language" /></a>
 <a href="https://developer.apple.com/ios"><img src="https://img.shields.io/badge/platform-iOS%2011+-000000.svg" alt="Platform" /></a>
 [![Version](https://img.shields.io/cocoapods/v/PropertyInjector.svg?style=flat)](https://cocoapods.org/pods/PropertyInjector)
 
-## Requirements
-
-PropertyInjector supports Swift 5.1+ and iOS 11+.
+## Why should I use PropertyInjector?
+Dependency injection, in general, is beneficial for your application because it promotes loosely coupled architecture and improves testability. There are several ways of implementing dependency injection, but I believe **property dependency injection is the most versatile and easy to use** one. This library is an implementation of property dependency injection where you just need to **declare your dependencies** and **use them as properties** in your classes. No constructor parameters, no extra code.
 
 ## Getting started
 
-### Install the pod
+### Install the library
 
-PropertyInjector is available through [CocoaPods](https://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+For Cocoapods, add the following line to your Podfile:
 
 ```ruby
 pod 'PropertyInjector'
+```
+
+For Carthage, add the following line to your Cartfile:
+
+```ruby
+github "stanfeldman/PropertyInjector"
 ```
 
 ### Register your dependencies
@@ -52,7 +56,21 @@ class ViewController: UIViewController {
 }
 ```
 
-## Advanced features
+## Features
+
+### Resolution strategies
+
+There are 2 supported resolution strategies:
+
+* `factory` creates your dependency every time it is resolved
+* `singleton` creates your dependency only once and reuses the instance
+
+```swift
+DependencyResolver.register {
+    $0.factory(MyDependency.self, MyDependency())
+    $0.singleton(MyDependency.self, MyDependency())
+}
+```
 
 ### Dependency parameters
 
@@ -66,9 +84,21 @@ DependencyResolver.register {
 }
 ```
 
+And then resolve it using some parameters:
+
+```swift
+@Inject(with: ["name": "Boris"]) private var dependency: MyDependency
+```
+
+or
+
+```swift
+let sub2: SubDependency2 = DependencyResolver.resolve(with: ["name": "Boris"])
+```
+
 ### Manual dependency resolution
 
-Automatic property injection using `@Inject` is prefferable, but it is possible to manually resolve a dependency.
+Automatic property injection using `@Inject` is preferable, but it is possible to manually resolve a dependency.
 
 ```swift
 class ViewController: UIViewController {
