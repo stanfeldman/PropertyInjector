@@ -34,6 +34,7 @@ public class DependencyResolver {
         self.dependencyDefinitionsWithParameters[key] = DependencyDefinitionWithParameters(resolutionStrategy: resolutionStrategy, initializer: initializer)
     }
     
+    /// Automagically resolve a dependency based on the returned type.
     public static func resolve<Dependency>() -> Dependency {
         let key = keyFor(type: Dependency.self)
         guard let dependencyDefinition = self.dependencyDefinitions[key] else {
@@ -59,6 +60,7 @@ public class DependencyResolver {
         }
     }
     
+    /// Automagically resolve a dependency with parameters based on the returned type.
     public static func resolve<Dependency>(with parameters: DependencyParameters) -> Dependency {
         let key = keyFor(type: Dependency.self)
         guard let dependencyDefinition = self.dependencyDefinitionsWithParameters[key] else {
