@@ -10,9 +10,7 @@ class DependencyManager {
     init() {
         DependencyResolver.register {
             $0.factory(Dependency.self, Dependency())
-            $0.singleton(SubDependency1.self) {
-                return SubDependency1()
-            }
+            $0.singleton(SubDependency1())
             $0.factory(SubDependency2.self) { parameters in
                 return SubDependency2(name: parameters["name"] as! String)
             }

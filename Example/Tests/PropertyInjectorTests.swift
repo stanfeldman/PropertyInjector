@@ -52,6 +52,16 @@ class PropertyInjectorTests: QuickSpec {
                 expect(service).to(beAKindOf(Service.self))
             }
             
+            it("class using shortcut method") {
+                DependencyResolver.register {
+                    $0.factory(Service())
+                }
+                
+                let service: Service = DependencyResolver.resolve()
+
+                expect(service).to(beAKindOf(Service.self))
+            }
+            
             it("mocked dependencies") {
                 DependencyResolver.register {
                     $0.singleton(Service.self, Service())
