@@ -31,7 +31,9 @@ You need to make sure that your dependencies get registered before they are inje
 class DependencyManager {
     init() {
         DependencyResolver.register {
-            $0.singleton(MyDependency.self, MyDependency())
+            $0.singleton(MyDependency())
+            // or
+            $0.singleton(MyInterface.self, MyImplementation())
         }
     }
 }
@@ -67,8 +69,8 @@ There are 2 supported resolution strategies:
 
 ```swift
 DependencyResolver.register {
-    $0.factory(MyDependency.self, MyDependency())
-    $0.singleton(MyDependency.self, MyDependency())
+    $0.factory(MyDependency())
+    $0.singleton(MyDependency())
 }
 ```
 
