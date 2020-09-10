@@ -62,6 +62,18 @@ class PropertyInjectorTests: QuickSpec {
                 expect(service).to(beAKindOf(Service.self))
             }
             
+            it("works for optionals too") {
+                DependencyResolver.register {
+                    $0.factory(Service())
+                }
+                
+                let service: Service? = DependencyResolver.resolve()
+                let service2: Service! = DependencyResolver.resolve()
+
+                expect(service).to(beAKindOf(Service.self))
+                expect(service2).to(beAKindOf(Service.self))
+            }
+            
             it("mocked dependencies") {
                 DependencyResolver.register {
                     $0.singleton(Service.self, Service())

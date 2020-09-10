@@ -116,6 +116,18 @@ class ViewController: UIViewController {
 
 Dependencies are resolved on demand so there is no problem injecting class B into class A and class A into class B as long as both dependencies are not used in their constructors.
 
+### Optionals resolution
+
+PropertyInjector will try to resolve an unwrapped type for optionals.
+
+
+```swift
+class ViewController: UIViewController {
+    @Inject private var dependency: MyDependency? // will try to resolve as MyDependency
+    @Inject private var dependency: MyDependency! // the same
+}
+```
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.

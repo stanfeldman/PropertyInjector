@@ -45,7 +45,7 @@ public class DependencyResolver {
             if let dependency = dependencyDefinition.initializer() as? Dependency {
                 return dependency
             } else {
-                fatalError("\(key) has not been added as an injectable object.")
+                fatalError("Could not instantiate an object for \(key).")
             }
             
         case .singleton:
@@ -55,7 +55,7 @@ public class DependencyResolver {
                 self.sharedInstances[key] = dependency
                 return dependency
             } else {
-                fatalError("\(key) has not been added as an injectable object.")
+                fatalError("Could not instantiate an object for \(key).")
             }
         }
     }
@@ -71,7 +71,7 @@ public class DependencyResolver {
             if let dependency = dependencyDefinition.initializer(parameters) as? Dependency {
                 return dependency
             } else {
-                fatalError("\(key) has not been added as an injectable object.")
+                fatalError("Could not instantiate an object for \(key).")
             }
             
         case .singleton:
@@ -81,7 +81,7 @@ public class DependencyResolver {
                 self.sharedInstances[key] = dependency
                 return dependency
             } else {
-                fatalError("\(key) has not been added as an injectable object.")
+                fatalError("Could not instantiate an object for \(key).")
             }
         }
     }
@@ -94,6 +94,21 @@ public class DependencyResolver {
     }
     
     private static func keyFor<Dependency>(type: Dependency.Type) -> String {
-        return String(reflecting: Dependency.self)
+        if let wrappedType = type as? OptionalProtocol.Type {
+            return String(reflecting: wrappedType.wrappedType)
+        } else {
+            return String(reflecting: type)
+        }
     }
+}
+
+protocol OptionalProtocol {
+    
+    /// Metatype value for the wrapped type.
+    static var wrappedType: Any.Type { get }
+}
+
+extension Optional : OptionalProtocol {
+    
+    static var wrappedType: Any.Type { return Wrapped.self }
 }
