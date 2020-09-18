@@ -89,9 +89,9 @@ class PropertyInjectorTests: QuickSpec {
             }
             
             it("crashes if the dependency is not registered") {
-                expect { () -> Void in
+                expect(expression: { () -> Void in
                     let _: Service = DependencyResolver.resolve()
-                }.to(throwAssertion())
+                }).to(throwAssertion())
             }
             
         }
