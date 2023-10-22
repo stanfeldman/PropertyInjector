@@ -1,4 +1,4 @@
-platform :ios, '11.0'
+platform :ios, '13.0'
 use_frameworks!
 
 target 'PropertyInjector_Example' do
@@ -7,7 +7,7 @@ target 'PropertyInjector_Example' do
   target 'PropertyInjector_Tests' do
     inherit! :search_paths
 
-    pod 'Quick', '~> 1.2.0'
-    pod 'Nimble', '~> 7.0'
+    pod 'Quick', '~> 7.3'
+    pod 'Nimble', '~> 13.0'
   end
 end

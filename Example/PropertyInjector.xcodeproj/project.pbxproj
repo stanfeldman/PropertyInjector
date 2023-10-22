@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		210BABBE2AE56B6D00641DB4 /* Pods_PropertyInjector_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 758A7C8295F68F44E95E1D16 /* Pods_PropertyInjector_Example.framework */; };
 		4C742F0C24DEF025003531E8 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4C742F0B24DEF025003531E8 /* Main.storyboard */; };
 		4C742F0E24DEF1E1003531E8 /* DependencyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C742F0D24DEF1E1003531E8 /* DependencyManager.swift */; };
 		4C742F1C24DEF5A7003531E8 /* Dependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4C742F1B24DEF5A7003531E8 /* Dependencies.swift */; };
@@ -14,7 +15,6 @@
 		607FACD81AFB9204008FA782 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACD71AFB9204008FA782 /* ViewController.swift */; };
 		607FACEC1AFB9204008FA782 /* PropertyInjectorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* PropertyInjectorTests.swift */; };
 		AA0FD559196533EE2D5D5019 /* Pods_PropertyInjector_Tests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C54194E9FF47E0B5520F1CF5 /* Pods_PropertyInjector_Tests.framework */; };
-		DDA312EDD41909C86153D0A5 /* Pods_PropertyInjector_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 758A7C8295F68F44E95E1D16 /* Pods_PropertyInjector_Example.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,7 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DDA312EDD41909C86153D0A5 /* Pods_PropertyInjector_Example.framework in Frameworks */,
+				210BABBE2AE56B6D00641DB4 /* Pods_PropertyInjector_Example.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +213,7 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = YBCCTWH2WW;
 						LastSwiftMigration = 0900;
 					};
 					607FACE41AFB9204008FA782 = {
@@ -477,8 +478,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 4553FB0CDCD40B191E3E5018 /* Pods-PropertyInjector_Example.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = YBCCTWH2WW;
 				INFOPLIST_FILE = PropertyInjector/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -492,8 +494,9 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B41BD6F007D0F2ED7994DE46 /* Pods-PropertyInjector_Example.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = YBCCTWH2WW;
 				INFOPLIST_FILE = PropertyInjector/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
@@ -516,6 +519,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -534,6 +538,7 @@
 					"$(inherited)",
 				);
 				INFOPLIST_FILE = Tests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
