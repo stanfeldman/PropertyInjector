@@ -12,7 +12,7 @@
  }
  ```
  */
-public class DependencyResolver {
+public actor DependencyResolver {
     
     private static var dependencyDefinitions = [String: DependencyDefinition]()
     private static var dependencyDefinitionsWithParameters = [String: DependencyDefinitionWithParameters]()
