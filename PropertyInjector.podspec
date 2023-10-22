@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'PropertyInjector'
-  s.version          = '0.0.10'
+  s.version          = '0.0.11'
   s.summary          = 'Property dependency injection framework for Swift.'
 
 # This description is used to generate tags and improve search results.
@@ -26,7 +26,7 @@ Declare your dependencies and use them as properties in your classes.
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'Stan Feldman' => 'stanislavfeldman@gmail.com' }
   s.source           = { :git => 'https://github.com/stanfeldman/PropertyInjector.git', :tag => s.version.to_s }
-  s.swift_version = '5.1'
-  s.ios.deployment_target = '11.0'
+  s.swift_version = '5.5'
+  s.ios.deployment_target = '13.0'
   s.source_files = 'PropertyInjector/Classes/**/*'
 end

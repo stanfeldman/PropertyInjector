@@ -1,12 +1,12 @@
 PODS:
-  - Nimble (7.3.4)
-  - PropertyInjector (0.0.5)
-  - Quick (1.2.0)
+  - Nimble (13.0.0)
+  - PropertyInjector (0.0.11)
+  - Quick (7.3.0)
 
 DEPENDENCIES:
-  - Nimble (~> 7.0)
+  - Nimble (~> 13.0)
   - PropertyInjector (from `../`)
-  - Quick (~> 1.2.0)
+  - Quick (~> 7.3)
 
 SPEC REPOS:
   trunk:
@@ -18,10 +18,10 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  Nimble: 051e3d8912d40138fa5591c78594f95fb172af37
-  PropertyInjector: c017b64e27727c1948e693d8dd141a64cb23a8fe
-  Quick: 58d203b1c5e27fff7229c4c1ae445ad7069a7a08
+  Nimble: 97d90931cca412a23224ff29e258809f75c258f7
+  PropertyInjector: a4e9996a307588f21ac48e9c083951916bcc6098
+  Quick: d32871931c05547cb4e0bc9009d66a18b50d8558
 
-PODFILE CHECKSUM: b2b3d69c84075b0f90f75676d91d212b149a9a4d
+PODFILE CHECKSUM: 1b4cc00efb7dd5dac8938d4936c5f959a45bf180
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.1
